@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const checkToken = async (req, res, next) => {
-  const token = req.headers["x-user-token"];
+  const token = req.headers["x-product-token"];
   if (!token) {
     return res.status(400).send("token not Found!!!");
   }

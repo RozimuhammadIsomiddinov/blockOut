@@ -1,14 +1,16 @@
 // generateToken.js
 const jwt = require("jsonwebtoken");
-
-module.exports = async (req, res, next) => {
-  try {
-    const token = jwt.sign({ id: userId }, req.body.parol, {
-      expiresIn: "3m",
-    });
-    res.header("x-user-token", token).send("token sended" + "\n" + token);
-    next();
-  } catch (err) {
-    return next(err.message);
-  }
+require("dotenv").config();
+module.exports = {
+  generete: async (req, res, next) => {
+    try {
+      const token = jwt.sign({ id: 123 }, process.env.JWT_SECRET_KEY, {
+        expiresIn: "3m",
+      });
+      res.header("x-product-token", token).send("token sended" + "\n" + token);
+      next();
+    } catch (err) {
+      return next(err.message);
+    }
+  },
 };
